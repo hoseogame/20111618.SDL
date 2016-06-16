@@ -17,8 +17,8 @@ private:
 	static const std::string s_hexaID;
 
 	int objectMaxCount;
-	std::vector<BaseManager*> m_gameObjects;
-
+	std::vector<BaseManager*> m_ManagerObjects;
+	std::vector<GameObject*> m_gameObjects;
 	HexaManager* m_HexaManager;
 	UIManager* m_UIManager;
 };

@@ -32,7 +32,9 @@ void SDLGameObject::draw()
 }
 
 void SDLGameObject::clean()
-{}
+{
+	delete this;
+}
 
 void SDLGameObject::update()
 {

@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Game.h"
-#include "GameStateMachine.h"
 #include "MainMenuState.h"
+#include "GameStateMachine.h"
 #include "InputHandler.h"
 #include "TextureManager.h"
 #include "Player.h"
@@ -25,7 +25,6 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 	
 	if(SDL_Init(SDL_INIT_EVERYTHING) == 0)
 	{
-		std::cout << "SDL init success\n";
 
 		m_pWindow = SDL_CreateWindow(title, xpos, ypos, width, height, flags);
 
@@ -39,7 +38,6 @@ bool Game::init(const char* title, int xpos, int ypos, int width, int height, bo
 			}
 			else
 			{
-				std::cout << "renderer init fail\n";
 				return false;
 			}
 		}

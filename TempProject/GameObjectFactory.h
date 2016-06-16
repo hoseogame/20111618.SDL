@@ -41,7 +41,7 @@ public:
 		std::map<std::string, BaseCreator*>::iterator it = m_creators.find(typeID);
 		if (it == m_creators.end())
 		{
-			std::cout << "could not find type" << typeID << "\n";
+			//std::cout << "could not find type" << typeID << "\n";
 			return NULL;
 		}
 		BaseCreator* pCreator = (*it).second;

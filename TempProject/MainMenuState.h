@@ -25,6 +25,8 @@ private:
 	static const std::string s_menuID;
 
 	std::vector<GameObject*> m_gameObjects;
+
+	int objectMaxCount;
 };
 
 #endif

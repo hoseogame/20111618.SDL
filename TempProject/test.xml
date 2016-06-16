@@ -52,13 +52,19 @@
 
     <HEXA>
         <TEXTURES>
-            <texture filename="assets/Block_ap3.png" ID="hexaicon"/>
+          <texture filename="assets/Block_ap3.png" ID="hexaicon"/>
+          <texture filename="assets/numbers.png" ID="numbers"/>
+          <texture filename="assets/Block.png" ID="Block"/>
+          <texture filename="assets/Count.png" ID="Count"/>
+          <texture filename="assets/Stage.png" ID="Stage"/>
+          <texture filename="assets/Score.png" ID="Score"/>
         </TEXTURES>
         
         <OBJECTS>
-            <object type="AnimatedGraphic" x="312" y="180" width="400" height="100" textureID="gameovertext" numFrames="2" animSpeed="2"/>
-            <object type="MenuButton" x="412" y="336" width="200" height="80" textureID="mainbutton" numFrames="0" callbackID="1"/>
-            <object type="MenuButton" x="412" y="536" width="200" height="80" textureID="restartbutton" numFrames="0" callbackID="2"/>
+          <object type="MenuButton" x="375" y="300" width="200" height="100" textureID="Stage" numFrames="0" />
+          <object type="MenuButton" x="375" y="400" width="200" height="100" textureID="Count" numFrames="0" />
+          <object type="MenuButton" x="375" y="500" width="200" height="100" textureID="Block" numFrames="0" />
+          <object type="MenuButton" x="375" y="600" width="200" height="100" textureID="Score" numFrames="0" />
         </OBJECTS>
     </HEXA>
 </States>

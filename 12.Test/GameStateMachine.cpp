@@ -12,7 +12,7 @@ void GameStateMachine::changeState(GameState* pState)
 	{
 		if (m_gameStates.back()->getStateID() == pState->getStateID())
 		{
-			return; // do nothing
+			return;
 		}
 		if (m_gameStates.back()->onExit())
 		{
@@ -22,7 +22,6 @@ void GameStateMachine::changeState(GameState* pState)
 	}
 	
 	m_gameStates.push_back(pState);
-	// initialise it
 	m_gameStates.back()->onEnter();
 }
 

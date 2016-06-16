@@ -41,7 +41,6 @@ bool GameOverState::onEnter()
 
 	setCallbacks(m_callbacks);
 
-	std::cout << "entering GameOverState\n";
 	return true;
 }
 
@@ -61,7 +60,6 @@ bool GameOverState::onExit()
 
 	TheInputHandler::Instance()->reset();
 
-	std::cout << "exiting GameOverState\n";
 	return true;
 }
 

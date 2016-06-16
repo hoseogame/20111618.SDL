@@ -6,6 +6,7 @@
 #include "InputHandler.h"
 #include "TextureManager.h"
 #include "GameStateMachine.h"
+#include "StateParser.h"
 
 #define DELAY_TIME 600
 const std::string HexaState::s_hexaID = "HEXA";
@@ -28,34 +29,48 @@ void HexaState::update()
 
 	for (int i = 0; i < objectMaxCount; i++)
 	{
-		m_gameObjects[i]->update();
+		m_ManagerObjects[i]->update();
 	}
 }
 
 void HexaState::render()
 {
+	for ( int i = 0; i < m_gameObjects.size(); i++ )
+	{
+		m_gameObjects[i]->draw();
+	}
+
 	for (int i = 0; i < objectMaxCount; i++)
 	{
-		m_gameObjects[i]->render();
+		m_ManagerObjects[i]->render();
 	}
 }
 
 bool HexaState::onEnter()
 {
+	StateParser stateParser;
+	stateParser.parseState( "test.xml", s_hexaID, &m_gameObjects, &m_textureIDList );
+
 	m_HexaManager = new HexaManager();
 	m_HexaManager->onEnter();
 	m_UIManager = new UIManager();
 	m_UIManager->onEnter();
-	m_gameObjects.push_back(m_HexaManager);
-	m_gameObjects.push_back(m_UIManager);
+	m_ManagerObjects.push_back(m_HexaManager);
+	m_ManagerObjects.push_back(m_UIManager);
 
-	objectMaxCount = m_gameObjects.size();
+	objectMaxCount = m_ManagerObjects.size();
 
 	return true;
 }
 
 bool HexaState::onExit()
 {
+	for ( int i = 0; i < m_gameObjects.size(); i++ )
+	{
+		m_gameObjects[i]->clean();
+	}
+	m_gameObjects.clear();
+
 	for (int i = 0; i < m_textureIDList.size(); i++)
 	{
 		TheTextureManager::Instance()->clearFromTextureMap(m_textureIDList[i]);

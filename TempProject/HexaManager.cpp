@@ -25,12 +25,6 @@ void HexaManager::render()
 
 bool HexaManager::onEnter()
 {
-	//if (!TheTextureManager::Instance()->load("assets/Block_ap3.png",
-	//	"hexaicon", TheGame::Instance()->getRenderer()))
-	//{
-	//	return false;
-	//}
-
 	Init();
 
 	objectMaxCount = m_gameObjects.size();
@@ -47,7 +41,6 @@ bool HexaManager::onExit()
 	}
 	m_gameObjects.clear();
 
-	TheTextureManager::Instance()->clearFromTextureMap("hexaicon");
 	return false;
 }
 
@@ -85,10 +78,12 @@ void HexaManager::Init()
 	{
 		for (int j = 0; j < 10; j++)
 		{
+			LoaderParams* temp = new LoaderParams(
+				(j * 25) + 100, (i * 25) + 100, 25, 25, "hexaicon");
 			m_Blocks[i][j] = new Block();
-			m_Blocks[i][j]->load(new LoaderParams(
-				(j * 25) + 100, (i * 25) + 100, 25, 25, "hexaicon"));
+			m_Blocks[i][j]->load(temp);
 			m_gameObjects.push_back(m_Blocks[i][j]);
+			delete temp;
 
 			if (i == 20 || j == 0 || j == 9) m_Blocks[i][j]->SetType(WALL);
 			else m_Blocks[i][j]->SetType(NONE);
@@ -99,47 +94,17 @@ void HexaManager::Init()
 	{
 		for (int j = 0; j<5; j++)
 		{
+			LoaderParams* temp = new LoaderParams(
+				(j * 25) + 375, (i * 25) + 100, 25, 25, "hexaicon");
 			m_nextBlocks[i][j] = new Block();
-			m_nextBlocks[i][j]->load(new LoaderParams(
-				(j * 25) + 375, (i * 25) + 100, 25, 25, "hexaicon"));
+			m_nextBlocks[i][j]->load(temp);
 			m_gameObjects.push_back(m_nextBlocks[i][j]);
+			delete temp;
 
 			if (i == 0 || i == 4 || j == 0 || j == 4) m_nextBlocks[i][j]->SetType(WALL);
 			else m_nextBlocks[i][j]->SetType(NONE);
 		}
 	}
-
-	/*tempLP = new LoaderParams();
-
-	for (int i = 0; i < 21; i++)
-	{
-		for (int j = 0; j < 10; j++)
-		{
-			m_Blocks[i][j] = new Block();
-			tempLP->setLoaderParams((j * 25) + 100, (i * 25) + 100, 25, 25, "hexaicon");
-			m_Blocks[i][j]->load(tempLP);
-			m_gameObjects.push_back(m_Blocks[i][j]);
-
-			if (i == 20 || j == 0 || j == 9) m_Blocks[i][j]->SetType(WALL);
-			else m_Blocks[i][j]->SetType(NONE);
-		}
-	}
-
-	for (int i = 0; i<5; i++)
-	{
-		for (int j = 0; j<5; j++)
-		{
-			m_nextBlocks[i][j] = new Block();
-			tempLP->setLoaderParams((j * 25) + 375, (i * 25) + 100, 25, 25, "hexaicon");
-			m_nextBlocks[i][j]->load(tempLP);
-			m_gameObjects.push_back(m_nextBlocks[i][j]);
-
-			if (i == 0 || i == 4 || j == 0 || j == 4) m_nextBlocks[i][j]->SetType(WALL);
-			else m_nextBlocks[i][j]->SetType(NONE);
-		}
-	}
-
-	delete tempLP;*/
 
 	srand((unsigned)time(NULL));
 
@@ -197,7 +162,7 @@ void HexaManager::makeNewBlock(int* shape)
 {
 	int rtn_tmp;
 	rtn_tmp = rand() % 100;
-	if (m_stage[level].triple_rate > rtn_tmp)	//트리플 확률로 트리플이 나올때
+	if (m_stage[level].triple_rate > rtn_tmp)
 	{
 		rtn_tmp = rand() % 5 + 1;
 		shape[0] = rtn_tmp;

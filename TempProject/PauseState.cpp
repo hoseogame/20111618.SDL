@@ -41,17 +41,18 @@ bool PauseState::onEnter()
 	
 	setCallbacks(m_callbacks);
 
-	std::cout << "entering PauseState\n";
 	return true;
 }
 
 bool PauseState::onExit()
 {
-	for (int i = 0; i < m_gameObjects.size(); i++)
+	for (int i = m_gameObjects.size() - 1; i >= 0; i--)
 	{
 		m_gameObjects[i]->clean();
+		m_gameObjects.pop_back();
 	}
 	m_gameObjects.clear();
+	m_gameObjects.resize(0);
 	
 	for (int i = 0; i < m_textureIDList.size(); i++)
 	{
@@ -61,12 +62,12 @@ bool PauseState::onExit()
 
 	TheInputHandler::Instance()->reset();
 
-	std::cout << "exiting PauseState\n";
 	return true;
 }
 
 void PauseState::s_pauseToMain()
 {
+	TheGame::Instance()->getStateMachine()->popState();
 	TheGame::Instance()->getGameStateMachine()->changeState(new MainMenuState());
 }
 

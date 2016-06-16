@@ -143,6 +143,7 @@ void UIManager::Init()
 		m_gameObjects.push_back(m_comboNumber[i]);
 		m_gameObjects.push_back(m_blockNumber[i]);
 	}
+
 	for (int i = 0; i < 10; i++)
 	{
 		m_scoreNumber[i] = new NumberObject();

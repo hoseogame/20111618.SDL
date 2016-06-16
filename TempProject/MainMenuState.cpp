@@ -41,14 +41,17 @@ bool MainMenuState::onEnter()
 
 	setCallbacks(m_callbacks);
 
+	objectMaxCount = m_gameObjects.size();
+
 	return true;
 }
 
 bool MainMenuState::onExit()
 {
-	for (int i = 0; i < m_gameObjects.size(); i++)
+	for (int i = m_gameObjects.size() - 1; i >= 0; i--)
 	{
 		m_gameObjects[i]->clean();
+		m_gameObjects.pop_back();
 	}
 	m_gameObjects.clear();
 	
@@ -69,8 +72,8 @@ void MainMenuState::s_exitFromMenu()
 
 void MainMenuState::s_menuToPlay()
 {
-	TheGame::Instance()->getGameStateMachine()->changeState(new PlayState());
-	//TheGame::Instance()->getGameStateMachine()->changeState(new HexaState());
+	//TheGame::Instance()->getGameStateMachine()->changeState(new PlayState());
+	TheGame::Instance()->getGameStateMachine()->changeState(new HexaState());
 }
 
 void MainMenuState::setCallbacks(const std::vector<Callback>& callbacks)
