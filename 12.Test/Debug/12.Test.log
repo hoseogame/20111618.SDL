@@ -1,0 +1,11 @@
+﻿  UIManager.cpp
+c:\users\user\downloads\20111618_deokeun-k\20111618_deokeun-k\sdl game development\12.test\uimanager.cpp(19): warning C4244: '초기화 중': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+c:\users\user\downloads\20111618_deokeun-k\20111618_deokeun-k\sdl game development\12.test\uimanager.cpp(33): warning C4244: '초기화 중': 'double'에서 'int'(으)로 변환하면서 데이터가 손실될 수 있습니다.
+  코드를 생성하고 있습니다...
+  컴파일하고 있습니다...
+  HexaState.cpp
+  코드를 생성하고 있습니다...
+  건너뛰고 있습니다... (관련된 변경 내용 없음)
+  MenuState.cpp
+  12.Test.vcxproj -> C:\Users\user\Downloads\20111618_DeokEun-K\20111618_DeokEun-K\SDL Game Development\Debug\12.Test.exe
+  12.Test.vcxproj -> C:\Users\user\Downloads\20111618_DeokEun-K\20111618_DeokEun-K\SDL Game Development\Debug\12.Test.pdb (Partial PDB)
